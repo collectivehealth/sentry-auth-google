@@ -1,14 +1,11 @@
 from __future__ import absolute_import, print_function
 
-import logging
 from sentry.auth.view import AuthView, ConfigureView
 from sentry.http import safe_urlopen, safe_urlread
 from sentry.utils import json
 from urllib import urlencode
 
 from .constants import ERR_INVALID_DOMAIN, USER_DETAILS_ENDPOINT
-
-logger = logging.getLogger('sentry')
 
 class FetchUser(AuthView):
     def __init__(self, domain=None, *args, **kwargs):
@@ -18,7 +15,7 @@ class FetchUser(AuthView):
     def dispatch(self, request, helper):
         access_token = helper.fetch_state('data')['access_token']
 
-        logger.warn("access token is %s" % access_token)
+        print "access token is %s" % access_token
 
         req = safe_urlopen('{0}?{1}'.format(
             USER_DETAILS_ENDPOINT,
@@ -27,12 +24,12 @@ class FetchUser(AuthView):
             }),
         ))
 
-        logger.warn("request is %s" % req)
+        print "request is %s" % req
 
         body = safe_urlread(req)
-        data = json.loads(body)
+        #data = json.loads(body)
 
-        logger.warn("body is %s" % body)
+        print "body is %s" % body
 
         return helper.error("todo!")
 
