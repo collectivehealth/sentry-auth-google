@@ -15,7 +15,7 @@ class FetchUser(AuthView):
     def dispatch(self, request, helper):
         access_token = helper.fetch_state('data')['access_token']
 
-        print "access token is %s" % access_token
+        print 'access token is %s' % access_token
 
         req = safe_urlopen('{0}?{1}'.format(
             USER_DETAILS_ENDPOINT,
@@ -41,7 +41,7 @@ class FetchUser(AuthView):
             return helper.error(ERR_INVALID_DOMAIN)
 
         helper.bind_state('user', data)
-
+""
         return helper.next_step()
 
 
