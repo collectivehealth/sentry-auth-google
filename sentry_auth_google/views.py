@@ -41,7 +41,7 @@ class FetchUser(AuthView):
             return helper.error(ERR_INVALID_DOMAIN)
 
         helper.bind_state('user', data)
-""
+        
         return helper.next_step()
 
 
