@@ -15,7 +15,7 @@ class FetchUser(AuthView):
     def dispatch(self, request, helper):
         access_token = helper.fetch_state('data')['access_token']
 
-        print('access token is %s' % access_token)
+        print("access token is %s" % access_token)
 
         req = safe_urlopen('{0}?{1}'.format(
             USER_DETAILS_ENDPOINT,
@@ -24,12 +24,12 @@ class FetchUser(AuthView):
             }),
         ))
 
-        print "request is %s" % req
+        print("request is %s" % req)
 
         body = safe_urlread(req)
         #data = json.loads(body)
 
-        print "body is %s" % body
+        print("body is %s" % body)
 
         return helper.error("todo!")
 
