@@ -33,7 +33,7 @@ class FetchUser(AuthView):
         if not data.get('data').get('email'):
             #TODO possible to sentry log this?
             print('Invalid response: %s' % body);
-            return helper.error(ERR_INVALID_RESPONSE;
+            return helper.error(ERR_INVALID_RESPONSE)
 
         helper.bind_state('user', data.get('data'))
 
