@@ -1,7 +1,6 @@
-import logging
-
 from __future__ import absolute_import, print_function
 
+import logging
 from sentry.auth.view import AuthView, ConfigureView
 from sentry.http import safe_urlopen, safe_urlread
 from sentry.utils import json
