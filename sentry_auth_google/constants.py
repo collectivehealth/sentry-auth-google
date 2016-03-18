@@ -11,6 +11,8 @@ CLIENT_ID = getattr(settings, 'GOOGLE_CLIENT_ID', None)
 
 CLIENT_SECRET = getattr(settings, 'GOOGLE_CLIENT_SECRET', None)
 
+DOMAIN = getattr(settings, 'GOOGLE_APPS_DOMAIN', None)
+
 ERR_INVALID_RESPONSE = 'Unable to fetch user information from Google.  Please check the log.'
 
 SCOPE = 'email'

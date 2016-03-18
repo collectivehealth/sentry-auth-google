@@ -5,7 +5,7 @@ from sentry.auth.providers.oauth2 import (
 )
 
 from .constants import (
-    AUTHORIZE_URL, ACCESS_TOKEN_URL, CLIENT_ID, CLIENT_SECRET, SCOPE
+    AUTHORIZE_URL, ACCESS_TOKEN_URL, CLIENT_ID, CLIENT_SECRET, SCOPE, DOMAIN
 )
 from .views import FetchUser, GoogleConfigureView
 
@@ -62,7 +62,7 @@ class GoogleOAuth2Provider(OAuth2Provider):
         # be a view which does that, or should we allow this step to raise
         # validation errors?
         return {
-            'domain': state['user']['domain'],
+            'domain': DOMAIN,
         }
 
     def build_identity(self, state):
