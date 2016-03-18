@@ -11,7 +11,7 @@ CLIENT_ID = getattr(settings, 'GOOGLE_CLIENT_ID', None)
 
 CLIENT_SECRET = getattr(settings, 'GOOGLE_CLIENT_SECRET', None)
 
-ERR_INVALID_DOMAIN = 'The domain for your Google account is not allowed to authenticate with this provider.'
+ERR_INVALID_RESPONSE = 'Unable to fetch user information from Google.  Please check the log.'
 
 SCOPE = 'email'
 

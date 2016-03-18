@@ -15,8 +15,6 @@ class FetchUser(AuthView):
     def dispatch(self, request, helper):
         access_token = helper.fetch_state('data')['access_token']
 
-        print("access token is %s" % access_token)
-
         req = safe_urlopen('{0}?{1}&alt=json'.format(
             USER_DETAILS_ENDPOINT,
             urlencode({
@@ -24,23 +22,20 @@ class FetchUser(AuthView):
             })
         ))
 
-        print("request is %s" % req)
-
         body = safe_urlread(req)
-        #data = json.loads(body)
+        data = json.loads(body)
 
-        print("body is %s" % body)
+        if not data.get('data'):
+            #TODO possible to sentry log this?
+            print('Invalid response: %s' % body)
+            return helper.error(ERR_INVALID_RESPONSE)
 
-        return helper.error("todo!")
+        if not data.get('data').get('email'):
+            #TODO possible to sentry log this?
+            print('Invalid response: %s' % body);
+            return helper.error(ERR_INVALID_RESPONSE;
 
-        if not data.get('domain'):
-            return helper.error(ERR_INVALID_DOMAIN)
-
-        # a domain may not yet be configured as this could be the setup flow
-        if self.domain and self.domain != data['domain']:
-            return helper.error(ERR_INVALID_DOMAIN)
-
-        helper.bind_state('user', data)
+        helper.bind_state('user', data.get('data'))
 
         return helper.next_step()
 
