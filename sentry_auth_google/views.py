@@ -17,11 +17,13 @@ class FetchUser(AuthView):
 
         print("access token is %s" % access_token)
 
-        req = safe_urlopen('{0}?{1}'.format(
+        url = 
+
+        req = safe_urlopen('{0}?{1}&alt=json'.format(
             USER_DETAILS_ENDPOINT,
             urlencode({
                 'access_token': access_token,
-            }),
+            })
         ))
 
         print("request is %s" % req)
@@ -41,7 +43,7 @@ class FetchUser(AuthView):
             return helper.error(ERR_INVALID_DOMAIN)
 
         helper.bind_state('user', data)
-        
+
         return helper.next_step()
 
 
