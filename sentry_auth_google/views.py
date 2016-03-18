@@ -17,8 +17,6 @@ class FetchUser(AuthView):
 
         print("access token is %s" % access_token)
 
-        url = 
-
         req = safe_urlopen('{0}?{1}&alt=json'.format(
             USER_DETAILS_ENDPOINT,
             urlencode({
