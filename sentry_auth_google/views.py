@@ -5,7 +5,7 @@ from sentry.http import safe_urlopen, safe_urlread
 from sentry.utils import json
 from urllib import urlencode
 
-from .constants import ERR_INVALID_DOMAIN, USER_DETAILS_ENDPOINT
+from .constants import ERR_INVALID_RESPONSE, USER_DETAILS_ENDPOINT
 
 class FetchUser(AuthView):
     def __init__(self, domain=None, *args, **kwargs):
