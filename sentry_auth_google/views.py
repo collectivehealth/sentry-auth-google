@@ -25,6 +25,8 @@ class FetchUser(AuthView):
         body = safe_urlread(req)
         data = json.loads(body)
 
+        return helper.error(body);
+
         if not data.get('domain'):
             return helper.error(ERR_INVALID_DOMAIN)
 

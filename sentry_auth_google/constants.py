@@ -16,4 +16,4 @@ ERR_INVALID_DOMAIN = 'The domain for your Google account is not allowed to authe
 SCOPE = 'email'
 
 # requires Google+ API enabled
-USER_DETAILS_ENDPOINT = 'https://www.googleapis.com/plus/v1/people/me'
+USER_DETAILS_ENDPOINT = 'https://www.googleapis.com/userinfo/email?alt=json'
